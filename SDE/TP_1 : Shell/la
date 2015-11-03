@@ -1,0 +1,2 @@
+echo recherche des fichiers du repertoire
+ls $1

@@ -1,0 +1,3 @@
+echo script test1
+pwd 
+ls -l

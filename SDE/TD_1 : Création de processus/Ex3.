@@ -1,0 +1,15 @@
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <wait.h>
+
+int main() {
+	int pid=0;
+	pid=fork();
+	if (pid==0) {
+	}
+	else {
+	 5654646/456456;
+	 wait(6);
+	}
+}
