@@ -1,0 +1,224 @@
+desc: I1 cache:         32768 B, 64 B, 8-way associative
+desc: D1 cache:         32768 B, 64 B, 8-way associative
+desc: LL cache:         6291456 B, 64 B, 12-way associative
+cmd: ./gentil
+events: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw 
+fl=/home/rbonnin/Cours/3TC_2/AGP/TD/TD gdb/Code/gentil.c
+fn=main
+9 2 0 0 0 0 0 1 0 0
+11 10 0 0 5 0 0 1 0 0
+12 7688 1 1 5122 0 0 2 0 0
+13 31467520 0 0 20974080 0 0 2560 0 0
+14 83886080 0 0 20971520 0 0 10485760 163842 81921
+18 1 0 0 0 0 0 0 0 0
+19 2 0 0 2 0 0 0 0 0
+fl=???
+fn=(below main)
+0 62 4 4 18 2 0 17 0 0
+fn=???
+0 172 18 16 79 6 1 21 1 1
+fn=_Exit
+0 8 2 2 1 1 0 0 0 0
+fn=_IO_cleanup
+0 50 4 4 14 0 0 8 0 0
+fn=_IO_flush_all_lockp
+0 88 8 8 25 11 8 12 0 0
+fn=__GI_strrchr
+0 51 3 3 3 1 0 0 0 0
+fn=__call_tls_dtors
+0 12 2 2 5 1 0 4 0 0
+fn=__ctype_init
+0 16 2 2 10 2 2 3 0 0
+fn=__cxa_atexit
+0 22 2 2 5 0 0 8 0 0
+fn=__cxa_finalize
+0 46 4 4 12 1 0 6 0 0
+fn=__init_cpu_features
+0 78 8 8 7 1 1 13 0 0
+fn=__init_misc
+0 24 2 2 7 0 0 5 1 1
+fn=__libc_csu_init
+0 34 3 3 8 1 0 8 0 0
+fn=__libc_memalign
+0 620 4 4 104 0 0 102 1 1
+fn=__new_exitfn
+0 39 5 5 11 5 4 5 0 0
+fn=__run_exit_handlers
+0 54 4 4 9 3 1 10 1 0
+fn=__sigjmp_save
+0 9 1 1 2 0 0 2 0 0
+fn=__sigsetjmp
+0 79 4 4 19 0 0 32 2 2
+fn=__tls_get_addr
+0 11 2 2 7 4 0 0 0 0
+fn=__unregister_atfork
+0 7 2 2 3 1 1 1 0 0
+fn=_dl_add_to_namespace_list
+0 106 2 2 26 0 0 20 0 0
+fn=_dl_add_to_slotinfo
+0 24 2 2 9 2 0 6 0 0
+fn=_dl_allocate_tls_init
+0 77 6 6 24 0 0 13 1 0
+fn=_dl_allocate_tls_storage
+0 332 3 3 7 0 0 295 37 37
+fn=_dl_cache_libcmp
+0 781 4 4 119 10 10 0 0 0
+fn=_dl_catch_error
+0 108 3 3 33 0 0 51 4 4
+fn=_dl_check_all_versions
+0 75 3 3 13 0 0 8 0 0
+fn=_dl_check_map_versions
+0 1180 14 14 383 14 14 161 13 13
+fn=_dl_debug_initialize
+0 44 3 3 15 0 0 4 0 0
+fn=_dl_debug_state
+0 2 0 0 2 0 0 0 0 0
+fn=_dl_determine_tlsoffset
+0 56 5 5 11 0 0 8 0 0
+fn=_dl_discover_osversion
+0 88 6 6 15 2 2 7 1 1
+fn=_dl_fini
+0 251 11 11 93 31 7 31 6 0
+fn=_dl_fixup
+0 150 6 5 56 12 1 20 0 0
+fn=_dl_important_hwcaps
+0 257 17 17 46 0 0 44 3 3
+fn=_dl_init
+0 84 3 3 24 1 0 12 0 0
+fn=_dl_init_paths
+0 125 17 17 13 0 0 36 2 2
+fn=_dl_initial_error_catch_tsd
+0 8 0 0 4 0 0 0 0 0
+fn=_dl_load_cache_lookup
+0 328 13 13 53 9 9 27 0 0
+fn=_dl_lookup_symbol_x
+0 18319 10 10 3684 88 84 2163 5 0
+fn=_dl_map_object
+0 413 25 25 91 0 0 72 5 5
+fn=_dl_map_object_deps
+0 1076 31 31 226 1 1 113 1 1
+fn=_dl_map_object_from_fd
+0 1718 44 44 360 17 17 183 27 27
+fn=_dl_name_match_p
+0 1022 2 2 264 0 0 152 1 1
+fn=_dl_new_object
+0 593 14 14 103 4 4 109 21 21
+fn=_dl_next_ld_env_entry
+0 342 2 2 117 27 27 1 0 0
+fn=_dl_next_tls_modid
+0 6 1 1 3 0 0 1 0 0
+fn=_dl_receive_error
+0 28 2 2 10 0 0 12 0 0
+fn=_dl_relocate_object
+0 10174 48 48 2464 204 174 1117 24 21
+fn=_dl_runtime_resolve
+0 42 3 3 18 0 0 16 0 0
+fn=_dl_setup_hash
+0 92 2 2 28 5 5 24 0 0
+fn=_dl_sort_fini
+0 187 6 6 50 1 1 23 3 0
+fn=_dl_start
+0 398 15 15 43 11 9 48 18 17
+fn=_dl_sysdep_read_whole_file
+0 41 3 3 6 0 0 9 0 0
+fn=_dl_sysdep_start
+0 435 12 11 120 18 17 29 5 5
+fn=_dl_sysdep_start_cleanup
+0 1 1 1 1 0 0 0 0 0
+fn=_dl_unload_cache
+0 10 1 1 3 0 0 2 0 0
+fn=_dl_vdso_vsym
+0 28 3 3 12 0 0 0 0 0
+fn=_fxstat
+0 30 1 1 3 0 0 0 0 0
+fn=_init
+0 60 6 6 15 3 0 18 4 3
+fn=_setjmp
+0 2 1 1 0 0 0 0 0 0
+fn=access
+0 9 1 1 1 0 0 1 0 0
+fn=bcmp
+0 981 12 12 244 9 9 76 3 3
+fn=brk
+0 12 1 1 1 0 0 1 1 1
+fn=call_init.part.0
+0 162 4 4 58 4 1 28 1 0
+fn=calloc
+0 64 2 2 0 0 0 0 0 0
+fn=check_match.9437
+0 4623 5 5 1909 23 18 548 2 0
+fn=close
+0 15 1 1 3 0 0 0 0 0
+fn=dl_main
+0 1072 74 74 218 24 20 140 18 18
+fn=do_lookup_x
+0 22785 14 14 7436 149 137 3506 4 0
+fn=do_preload
+0 27 3 3 7 0 0 8 0 0
+fn=exit
+0 4 1 1 0 0 0 1 0 0
+fn=expand_dynamic_string_token
+0 33 2 2 6 0 0 9 1 1
+fn=gettimeofday
+0 15 1 1 1 0 0 5 0 0
+fn=handle_intel.isra.0
+0 94 5 5 14 0 0 26 0 0
+fn=index
+0 164 2 2 14 2 2 0 0 0
+fn=init_cacheinfo
+0 142 8 8 7 0 0 13 2 2
+fn=init_tls
+0 65 4 4 14 0 0 13 1 1
+fn=intel_check_word
+0 803 11 11 70 6 6 12 0 0
+fn=malloc
+0 54 0 0 0 0 0 0 0 0
+fn=map_doit
+0 12 1 1 5 0 0 3 0 0
+fn=match_symbol
+0 179 5 5 72 4 4 27 0 0
+fn=memcpy
+0 368 5 5 57 0 0 46 8 8
+fn=memcpy@GLIBC_2.2.5
+0 13 2 2 4 0 0 0 0 0
+fn=mempcpy
+0 143 6 5 21 3 2 16 3 3
+fn=memset
+0 2138 0 0 9 0 0 2084 33 33
+fn=mmap
+0 54 1 1 9 0 0 0 0 0
+fn=mprotect
+0 30 1 1 6 0 0 0 0 0
+fn=munmap
+0 5 0 0 1 0 0 0 0 0
+fn=open
+0 15 1 1 3 0 0 0 0 0
+fn=open_verify
+0 392 13 13 69 6 6 36 1 1
+fn=openaux
+0 34 2 2 16 0 0 6 0 0
+fn=read
+0 10 1 1 2 0 0 0 0 0
+fn=rtld_lock_default_lock_recursive
+0 8 1 1 8 1 1 0 0 0
+fn=rtld_lock_default_unlock_recursive
+0 8 0 0 8 0 0 0 0 0
+fn=sbrk
+0 17 2 2 5 1 1 2 1 1
+fn=strcasecmp
+0 7 2 2 3 1 1 1 0 0
+fn=strcmp
+0 10312 0 0 3071 11 9 0 0 0
+fn=strlen
+0 601 5 5 73 0 0 0 0 0
+fn=strncasecmp
+0 6 2 2 3 0 0 0 0 0
+fn=strsep
+0 799 2 2 250 0 0 1 0 0
+fn=time
+0 15 2 2 1 0 0 5 0 0
+fn=uname
+0 5 1 1 1 0 0 0 0 0
+fn=version_check_doit
+0 10 1 1 4 0 0 2 0 0
+summary: 115448183 643 638 41973349 744 617 10500032 164108 82159
