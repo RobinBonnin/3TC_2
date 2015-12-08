@@ -1,0 +1,156 @@
+#define cle_boiteauxlettres 10 
+#define cle_shmem 20
+#define cle_mutex_shmem 21
+#define cle_mutex_prio 22
+
+#define NORD 0
+#define EST 1
+#define SUD 2
+#define OUEST 3
+
+#define VERT 1
+#define ROUGE 0
+
+#define NB_VOITURES 10
+
+int arr_prio = 0 ;
+int dep_prio = 0 ; 
+
+Generation traffic {
+	attachement à boite aux lettres
+	while(1) {
+		dep=random( 0...3);
+		arr=random( 0..3) 
+		while (arr==dep) {
+			arr=random(0..3)
+		}
+		ecrire boite au lettre arr et dep
+		afficher "Generation trafic : Voiture venant de dep et allant à arr)
+		attendre un certain temps (Disons 1/4 seconde, sinon on génère des millions de voitures)
+	}
+}
+
+Generation traffic prio {
+	while(1) {
+		t=random
+		wait(t)
+		dep_prio=random( 0...3);
+		arr_prio=random( 0..3) 
+		while (arr_prio==dep_prio) {
+			arr_prio=random(0..3)
+		}
+		afficher "generation trafic prio : Un véhicule prioritaire vient de dep_prio et veut aller à arr_prio"
+		kill(SIGUSR1,coordinateur)
+	}
+	
+}
+
+
+gestion prio {
+	for(i = 0; i < 4;i++ ) {
+		feux[i] = ROUGE
+	}
+	feux[dep_prio] = VERT	
+	down(mutex_shmem)
+	for(i=0;i<4;i++) {	
+		msgsnd(cle_shmem,feux[i])
+	}
+	up(mutex_shmem)
+}
+
+Feux{
+	int feux[4]
+	attacher shmem
+	
+	down(mutex_shmem)
+	ecrire PID dans la shmem
+	up(mutex_shmem)
+
+	signal(SIGUSR2, gestion prio)
+	while(true){	
+		k:=0;
+		wait(5)
+		k++;
+		if(k%2 == 0) {
+			feux[NORD] = feux[SUD] = VERT
+		}
+		else {
+			feux[EST] = feux[OUEST] = VERT
+		}
+		down(mutex_shmem)
+		for(i=0;i<4;i++) {
+			msgsnd(cle_sem_shmem,feux[i])
+			afficher " Feux : feux[i]"
+		} 
+		up(mutex_shmem)
+	}
+}
+
+arrivee prio {
+	kill(SIGUSR2,Feux)
+}
+
+Coordinateur {
+	int[NB_VOITURES][2] voitures
+	int etatfeux[4]
+	creer shmem
+	creer boite aux lettre
+	creer mutex_shmem
+
+	down(mutex_shmem)
+	ecrire PID dans la shmem
+	up(mutex_shmem)
+
+	signal(SIGUSR1, arrivee_prio)
+
+	while(true) {
+	read(cle_sem_boiteauxlettres, voitures)
+	for(i=0;i<NB_VOITURES;i++) {
+		if(voiture[i][0] == 0 && voiture[i][1] == 0) {
+			voiture[i][0] == dep
+			voiture[i][1] == arr
+		}
+	down(mutex_shmem)
+	for(i=0;i<4;i++) {
+		etatfeu[i]=read(cle_sem_boiteauxlettres, voitures)
+	}
+	up(mutex_shmem)
+	if(dep_prio !=0 && arr_prio != 0 ) {
+		afficher "Coordinateur : voiture prio passe de dep_prio à arr_prio"		
+		dep_prio = 0 
+		arr_prio = 0
+	}	
+	if(etatfeu[EST] == VERT || etatfeu[OUEST] == VERT){ 
+		afficher "Coordinateur : 		
+		for(i=0;i<NB_VOITURES){
+			if( (voitures[i][0] == EST && (voitures[i][1] == OUEST || voitures[i][1] == NORD)) || (voitures[i][0] == OUEST && (voitures[i][1] == EST || voitures[i][1] == SUD)) ) {
+				voitures[i][1] = voiture[i][2]
+				voitures[i][2] = -1 
+			}
+			afficher "Coordinateur : voiture[i][0]  voiture [i][1] \n"
+			else if( (voitures[i][0] == EST && voitures[i][1] == SUD) || (voitures[i][0] == OUEST && voitures[i][1] == NORD) ) {
+				voitures[i][1] = voiture[i][2]
+				voitures[i][2] = -1 
+			}
+	}
+	if(etatfeu[NORD] == VERT || etatfeu[SUD] == VERT) {	
+		for(i=0;i<NB_VOITURES){
+			if( (voitures[i][0] == SUD && (voitures[i][1] == NORD || voitures[i][1] == EST)) || (voitures[i][0] == NORD && (voitures[i][1] == SUD || voitures[i][1] == OUEST)) ) {
+				voitures[i][1] = voiture[i][2]
+				voitures[i][2] = -1 
+			}
+			
+			else if( (voitures[i][0] == NORD && voitures[i][1] == EST) || (voitures[i][0] == SUD && voitures[i][1] == OUEST) ) {
+				voitures[i][1] = voiture[i][2]
+				voitures[i][2] = -1 
+			}
+			afficher "Coordinateur : voiture[i][0]  voiture [i][1] \n"
+	}
+
+	for(i=0;i<NB_VOITURES;i++){
+		if(voitures[i][1] == -1 ){
+			voiture[i][0] = voiture[i][1] = 0
+	}
+	afficher "Coordinateur : voiture[i][0]  voiture [i][1] \n"	
+}
+
